@@ -9,7 +9,11 @@ app.use(require('morgan')('dev'))
 // CREATE
 app.post('/api/flavors' , async (req,res,next) => {
 	try {
-		const SQL = ``
+		const SQL = `
+			INSERT INTO flavors (name , is_favorite , updated_at) VALUES ($1, $2, now())
+			WHERE id = $3
+			RETURNING *;
+		`	
 		const response = await client.query(SQL)
 	} catch (error) {
 		next(error)
@@ -41,14 +45,14 @@ app.get('/api/flavors/:id' , async (req,res,next) => {
 			ORDER BY created_at DESC;
 		`
 		const response = await client.query(SQL, [req.params.id])
-		res.send(response.rows)
+		res.send(response.rows[0])
 	} catch (error) {
 		next(error)
 	}
 })
 
 // UPDATE
-app.put('/api/flavors' , async (req,res,next) => {
+app.put('/api/flavors/:id' , async (req,res,next) => {
 	try {
 		const SQL = ``
 		const response = await client.query(SQL)
