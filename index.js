@@ -12,7 +12,14 @@ const init = async () => {
 
 	// Define the Table
 	let SQL = `
-
+		DROP TABLE IF EXISTS flavors;
+		CREATE TABLE flavors(
+			id SERIAL PRIMARY KEY,
+			name VARCHAR(100) NOT NULL,
+			is_favorite BOOLEAN DEFAULT FALSE,
+			created_at TIMESTAMP DEFAULT now(),
+			updated_at TIMESTAMP DEFAULT now()
+		);
     `
 
 	// CREATE the Table / Send the initial SQL
@@ -23,7 +30,20 @@ const init = async () => {
 
 	// SEED the Table
 	SQL = `
-
+		INSERT INTO flavors (name) VALUES ('Vanilla');
+		INSERT INTO flavors (name) VALUES ('Chocolate');
+		INSERT INTO flavors (name) VALUES ('Strawberry');
+		INSERT INTO flavors (name) VALUES ('Butter Pecan');
+		INSERT INTO flavors (name) VALUES ('Chocolate Chip');
+		INSERT INTO flavors (name) VALUES ('Mint Chocolate Chip');
+		INSERT INTO flavors (name) VALUES ('Rocky Road');
+		INSERT INTO flavors (name) VALUES ('Neapolitan (Vanilla, Chocolate, Strawberry)');
+		INSERT INTO flavors (name) VALUES ('Cookies and Cream');
+		INSERT INTO flavors (name) VALUES ('Caramel');
+		INSERT INTO flavors (name) VALUES ('Brown Butter Pecan');
+		INSERT INTO flavors (name) VALUES ('Chocolate');
+		INSERT INTO flavors (name) VALUES ('Chocolate');
+		INSERT INTO flavors (name) VALUES ('Chocolate');
 	`;
 	await client.query(SQL);
 	console.log("Success! Seeded database!");
