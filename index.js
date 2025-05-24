@@ -31,6 +31,22 @@ app.get('/api/flavors' , async (req,res,next) => {
 	}
 })
 
+
+app.get('/api/flavors/:id' , async (req,res,next) => {
+	try {
+		const SQL = `
+			SELECT *
+			FROM flavors
+			WHERE id = $1
+			ORDER BY created_at DESC;
+		`
+		const response = await client.query(SQL, [req.params.id])
+		res.send(response.rows)
+	} catch (error) {
+		next(error)
+	}
+})
+
 // UPDATE
 app.put('/api/flavors' , async (req,res,next) => {
 	try {
