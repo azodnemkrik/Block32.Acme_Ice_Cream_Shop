@@ -5,6 +5,53 @@ const client = new pg.Client("postgres://localhost/acme_ice_cream_shop");
 app.use(express.json())
 app.use(require('morgan')('dev'))
 
+
+// CREATE
+app.post('/api/flavors' , async (req,res,next) => {
+	try {
+		const SQL = ``
+		const response = await client.query(SQL)
+	} catch (error) {
+		next(error)
+	}
+})
+
+// READ
+app.get('/api/flavors' , async (req,res,next) => {
+	try {
+		const SQL = `
+			SELECT *
+			FROM flavors
+			ORDER BY created_at DESC;
+		`
+		const response = await client.query(SQL)
+		res.send(response.rows)
+	} catch (error) {
+		next(error)
+	}
+})
+
+// UPDATE
+app.put('/api/flavors' , async (req,res,next) => {
+	try {
+		const SQL = ``
+		const response = await client.query(SQL)
+	} catch (error) {
+		next(error)
+	}
+})
+
+// DELETE
+app.delete('/api/flavors' , async (req,res,next) => {
+	try {
+		const SQL = ``
+		const response = await client.query(SQL)
+	} catch (error) {
+		next(error)
+	}
+})
+
+
 const init = async () => {
 	// Make Connection
 	await client.connect();
@@ -33,7 +80,7 @@ const init = async () => {
 		INSERT INTO flavors (name) VALUES ('Vanilla');
 		INSERT INTO flavors (name) VALUES ('Chocolate');
 		INSERT INTO flavors (name) VALUES ('Strawberry');
-		INSERT INTO flavors (name) VALUES ('Butter Pecan');
+		INSERT INTO flavors (name , is_favorite) VALUES ('Butter Pecan' , true );
 		INSERT INTO flavors (name) VALUES ('Chocolate Chip');
 		INSERT INTO flavors (name) VALUES ('Mint Chocolate Chip');
 		INSERT INTO flavors (name) VALUES ('Rocky Road');
