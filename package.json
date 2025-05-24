@@ -1,0 +1,29 @@
+{
+  "name": "block32.acme_ice_cream_shop",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azodnemkrik/Block32.Acme_Ice_Cream_Shop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/azodnemkrik/Block32.Acme_Ice_Cream_Shop/issues"
+  },
+  "homepage": "https://github.com/azodnemkrik/Block32.Acme_Ice_Cream_Shop#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "pg": "^8.16.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0"
+  }
+}
