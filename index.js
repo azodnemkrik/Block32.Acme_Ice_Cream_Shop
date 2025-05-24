@@ -41,9 +41,6 @@ const init = async () => {
 		INSERT INTO flavors (name) VALUES ('Cookies and Cream');
 		INSERT INTO flavors (name) VALUES ('Caramel');
 		INSERT INTO flavors (name) VALUES ('Brown Butter Pecan');
-		INSERT INTO flavors (name) VALUES ('Chocolate');
-		INSERT INTO flavors (name) VALUES ('Chocolate');
-		INSERT INTO flavors (name) VALUES ('Chocolate');
 	`;
 	await client.query(SQL);
 	console.log("Success! Seeded database!");
