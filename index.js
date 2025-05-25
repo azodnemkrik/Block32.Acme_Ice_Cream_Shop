@@ -10,10 +10,10 @@ app.use(require('morgan')('dev'))
 app.post('/api/flavors' , async (req,res,next) => {
 	try {
 		const SQL = `
-			INSERT INTO flavors (name) VALUES ($1)
+			INSERT INTO flavors (name , is_favorite ) VALUES ($1 , $2)
 			RETURNING *;
 		`	
-		const response = await client.query(SQL, [req.body.name])
+		const response = await client.query(SQL, [req.body.name , req.body.is_favorite])
 		res.send(response.rows[0])
 	} catch (error) {
 		next(error)
