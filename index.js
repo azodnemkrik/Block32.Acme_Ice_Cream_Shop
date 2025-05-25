@@ -6,7 +6,7 @@ app.use(express.json())
 app.use(require('morgan')('dev'))
 
 
-// CREATE
+// CREATE (POST)
 app.post('/api/flavors' , async (req,res,next) => {
 	try {
 		const SQL = `
@@ -20,7 +20,7 @@ app.post('/api/flavors' , async (req,res,next) => {
 	}
 })
 
-// READ
+// READ (GET)
 app.get('/api/flavors' , async (req,res,next) => {
 	try {
 		const SQL = `
@@ -51,7 +51,7 @@ app.get('/api/flavors/:id' , async (req,res,next) => {
 	}
 })
 
-// UPDATE
+// UPDATE (PUT)
 app.put('/api/flavors/:id' , async (req,res,next) => {
 	try {
 		const SQL = `
@@ -67,7 +67,7 @@ app.put('/api/flavors/:id' , async (req,res,next) => {
 	}
 })
 
-// DELETE
+// DELETE (DELETE)
 app.delete('/api/flavors/:id' , async (req,res,next) => {
 	try {
 		const SQL = `
