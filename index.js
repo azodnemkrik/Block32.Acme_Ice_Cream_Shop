@@ -29,7 +29,7 @@ app.get('/api/flavors' , async (req,res,next) => {
 			ORDER BY created_at DESC;
 		`
 		const response = await client.query(SQL)
-		res.send(response.rows[0])
+		res.send(response.rows)
 	} catch (error) {
 		next(error)
 	}
