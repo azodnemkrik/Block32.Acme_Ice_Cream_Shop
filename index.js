@@ -62,10 +62,14 @@ app.put('/api/flavors/:id' , async (req,res,next) => {
 })
 
 // DELETE
-app.delete('/api/flavors' , async (req,res,next) => {
+app.delete('/api/flavors/:id' , async (req,res,next) => {
 	try {
-		const SQL = ``
-		const response = await client.query(SQL)
+		const SQL = `
+			DELETE FROM flavors
+			WHERE id = $1
+		`
+		const response = await client.query(SQL, [req.params.id])
+		res.sendStatus(204)
 	} catch (error) {
 		next(error)
 	}
